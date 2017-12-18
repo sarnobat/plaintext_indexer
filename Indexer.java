@@ -13,9 +13,8 @@ import java.util.stream.Stream;
 public class Indexer {
   public static void main(String[] args) throws IOException {
     String f = "/files.txt";
-    if (args.length < 1) {
+    if (args.length > 0) {
       f = args[0];
-      System.err.println("[DEBUG] No args specified, using " + f);
     }
     System.out.println("SRIDHAR Indexer.main() - f = " + f);
     Stream<String> stream = Files.lines(Paths.get(f));

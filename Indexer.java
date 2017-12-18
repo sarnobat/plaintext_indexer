@@ -32,7 +32,9 @@ public class Indexer {
                 Path fileName = path.getFileName();
                 //System.err.println(fileName);
                 if (fileName != null) {
-                  m.put(fileName.toString(), line);
+                    for(String token : fileName.spliterator()) {
+                        m.put(token, line);
+                    }
                 }
                 if (path.getParent() != null) {
                   if (path.getParent().getFileName() != null) {

@@ -27,25 +27,29 @@ public class Indexer {
             public void accept(String line) {
               //System.out.println(line);
               Map<String, String> m = new HashMap<String, String>();
-              Path path = Paths.get(line);
-              Path fileName = path.getFileName();
-              //System.err.println(fileName);
-              if (fileName != null) {
-                m.put(fileName.toString(), line);
-              }
-              if (path.getParent() != null) {
-                if (path.getParent().getFileName() != null) {
-                  m.put(path.getParent().getFileName().toString(), line);
+              try {
+                Path path = Paths.get(line);
+                Path fileName = path.getFileName();
+                //System.err.println(fileName);
+                if (fileName != null) {
+                  m.put(fileName.toString(), line);
                 }
-              }
-              m.forEach(
-                  new BiConsumer<String, String>() {
+                if (path.getParent() != null) {
+                  if (path.getParent().getFileName() != null) {
+                    m.put("1_" + path.getParent().getFileName().toString(), line);
+                  }
+                }
+                m.forEach(
+                    new BiConsumer<String, String>() {
 
-                    @Override
-                    public void accept(String t, String u) {
-                      System.out.println(t + "\t" + u);
-                    }
-                  });
+                      @Override
+                      public void accept(String t, String u) {
+                        System.out.println(t + "\t" + u);
+                      }
+                    });
+              } catch (Exception e) {
+                e.printStackTrace();
+              }
             }
           });
 

@@ -15,7 +15,9 @@ public class Indexer {
     String f = "/files.txt";
     if (args.length < 1) {
       f = args[0];
+      System.err.println("[DEBUG] No args specified, using " + f);
     }
+    System.out.println("SRIDHAR Indexer.main() - f = " + f);
     Stream<String> stream = Files.lines(Paths.get(f));
     try {
 

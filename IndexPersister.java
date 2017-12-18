@@ -14,7 +14,12 @@ public class IndexPersister {
 
   public static void main(String[] args) throws IOException {
 
-    try (Stream<String> stream = Files.lines(Paths.get("/Users/ssarnobat/trash/index.txt"))) {
+    String string = System.getProperty("user.home") + "/trash/index.txt";
+
+    if (args.length > 0) {
+      string = args[0];
+    }
+    try (Stream<String> stream = Files.lines(Paths.get(string))) {
 
       stream.forEach(
           new Consumer<String>() {

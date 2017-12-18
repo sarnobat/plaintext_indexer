@@ -12,8 +12,11 @@ import java.util.stream.Stream;
 
 public class Indexer {
   public static void main(String[] args) throws IOException {
-
-    Stream<String> stream = Files.lines(Paths.get("/files.txt"));
+    String f = "/files.txt";
+    if (args.length < 1) {
+      f = args[0];
+    }
+    Stream<String> stream = Files.lines(Paths.get(f));
     try {
 
       stream.forEach(

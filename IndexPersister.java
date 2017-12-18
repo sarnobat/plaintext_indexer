@@ -1,16 +1,14 @@
 package test;
 
-import java.io.File;
+import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.CREATE;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.attribute.FileAttribute;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.nio.file.StandardOpenOption.APPEND;
-import static java.nio.file.StandardOpenOption.CREATE;
 
 public class IndexPersister {
 
@@ -35,6 +33,7 @@ public class IndexPersister {
                     Path f = Files.createFile(path);
                   }
                   Files.write(path, line.getBytes(), APPEND, CREATE);
+                  Files.write(path, "\n".getBytes(), APPEND, CREATE);
                   System.err.println("[DEBUG] wrote: " + line);
 
                 } catch (IOException e) {

@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 public class Indexer {
   public static void main(String[] args) throws IOException {
 
-    try (Stream<String> stream = Files.lines(Paths.get("/files.txt"))) {
+    Stream<String> stream = Files.lines(Paths.get("/files.txt"));
+    try {
 
       stream.forEach(
           new Consumer<String>() {
@@ -44,8 +45,8 @@ public class Indexer {
             }
           });
 
-    } catch (IOException e) {
-      e.printStackTrace();
+    } finally {
+      stream.close();
     }
   }
 }

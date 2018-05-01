@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Spliterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
@@ -52,7 +51,7 @@ public class Indexer {
                       }
                     });
               } catch (Exception e) {
-                e.printStackTrace();
+                //e.printStackTrace();
               }
             }
           });
